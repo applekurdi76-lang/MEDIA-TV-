@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3032189625676969"
+     crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-3032189625676969">
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEDIA TV</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Oswald:wght@500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Define the custom Kurdish font */
+        @font-face {
+            font-family: 'rudawbold';
+            /* ⚠️ دڵنیابە لە بوونی فۆڵدەری 'fonts' و فایلی 'rudawbold.ttf' */
+            src: url('fonts/rudawbold.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        /* General Reset and Body Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: white;
+        }
+
+        header {
+            background-color: #2a2a2a;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.2em;
+            color: #007bff;
+            text-transform: uppercase;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 10px;
+        }
+
+        /* Player Styling (16:9 Aspect Ratio) */
+        .player-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        #main-player {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Marquee (Scrolling Text) Styling */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            width: 100%;
+            background: #0066FF;
+            padding: 5px 0;
+            direction: ltr; /* Keeps the scrolling direction */
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 55s linear infinite;
+            padding-left: 100%;
+        }
+
+        .marquee-content:hover {
+            animation-play-state: paused;
+        }
+
+        .marquee-text {
+            font-family: 'rudawbold', Tahoma, sans-serif; /* Applied font */
+            font-size: 16px;
+            color: white;
+            direction: rtl; /* Right-to-Left for Kurdish text */
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Channel List and Button Styling */
+        .channel-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        
+        .channel-section-title {
+            grid-column: 1 / -1; 
+            text-align: left;
+            font-family: 'rudawbold', 'Poppins', sans-serif; /* Applied font */
+            font-size: 1.6em;
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            padding: 10px 0;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .channel-btn {
+            background-color: #333;
+            border: none;
+            color: white;
+            padding: 12px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.2s, transform 0.2s;
+            text-align: left;
+            font-size: 1em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-family: 'rudawbold', Tahoma, sans-serif; /* Applied font to buttons */
+        }
+
+        .channel-btn:hover {
+            background-color: #444;
+            transform: translateY(-2px);
+        }
+
+        .channel-btn.active {
+            background-color: #00a6ff;
+            box-shadow: 0 0 8px #00a6ff;
+        }
+
+        @media (max-width: 768px) {
+            .channel-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="center-text">Media TV</h1>
+    </header>
+
+    <div class="marquee-container">
+        <div class="marquee-content">
+             <p id="marquee-text-display" class="marquee-text">
+                  Loading news...
+             </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="player-container">
+            <iframe id="main-player" src="" allow="autoplay" allowfullscreen></iframe>
+        </div>
+
+        <div id="channel-list-container" class="channel-list">
+            </div>
+    </div>
+
+    <script>
+        const player = document.getElementById('main-player');
+        const channelListContainer = document.getElementById('channel-list-container');
+        let activeChannelUrl = '';
+
+        function changeChannel(channelUrl, clickedButton) {
+            try {
+                if (!channelUrl) {
+                    throw new Error("Channel URL is empty.");
+                }
+
+                if (activeChannelUrl !== channelUrl) {
+                    player.src = channelUrl;
+                    activeChannelUrl = channelUrl;
+                }
+                
+                document.querySelectorAll('.channel-btn').forEach(btn => btn.classList.remove('active'));
+                clickedButton.classList.add('active');
+
+            } catch (error) {
+                console.error('Error changing channel:', error);
+                alert('.ببوره کێشه یه ک دکه نالیدا یاهه ی نێزیکترین ده م دێ چاره سه رکه ین .');
+            }
+        }
+        
+        // Function to render the marquee text
+        function renderMarquee(data) {
+            const marqueeElement = document.getElementById('marquee-text-display');
+            if (marqueeElement && data.marquee_text) {
+                marqueeElement.textContent = data.marquee_text;
+            }
+        }
+
+        // Function to create and render channel buttons from data
+        function renderChannels(channelData) { 
+            channelListContainer.innerHTML = '';
+            let firstChannelUrl = '';
+            let isFirst = true;
+
+            for (const sectionTitle in channelData) {
+                // Create section title
+                const titleElement = document.createElement('h2');
+                titleElement.classList.add('channel-section-title');
+                titleElement.textContent = sectionTitle;
+                channelListContainer.appendChild(titleElement);
+
+                // Loop through channels in the current section
+                channelData[sectionTitle].forEach(channel => {
+                    const btn = document.createElement('button');
+                    btn.classList.add('channel-btn');
+                    btn.textContent = channel.name;
+                    btn.setAttribute('data-src', channel.url);
+
+                    if (isFirst) {
+                        btn.classList.add('active');
+                        firstChannelUrl = channel.url;
+                        isFirst = false;
+                    }
+
+                    btn.addEventListener('click', () => {
+                        changeChannel(channel.url, btn);
+                    });
+
+                    channelListContainer.appendChild(btn);
+                });
+            }
+
+            // Load the default channel into the player
+            if (firstChannelUrl) {
+                changeChannel(firstChannelUrl, document.querySelector('.channel-btn.active'));
+            } else {
+                 player.src = "https://example.com/placeholder.mp4";
+                 console.warn("No channels found to load.");
+            }
+        }
+
+        // 1. Fetch data from the JSON file
+        async function fetchChannels() {
+            try {
+                const response = await fetch('channels.json'); 
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                
+                // Render the Marquee text
+                renderMarquee(data);
+
+                // Render the Channels
+                if (data.channels) {
+                   renderChannels(data.channels);
+                } else {
+                   throw new Error("Channels data structure missing.");
+                }
+
+            } catch (error) {
+                console.error('Failed to load data:', error);
+                channelListContainer.innerHTML = `<p class="marquee-text" style="grid-column: 1 / -1; color: red; font-family: Tahoma, sans-serif;">ببورە، کێشەیەک لە بارکردنی داتای وێب سایتەکەدا ڕوویدا.</p>`;
+            }
+        }
+
+        fetchChannels();
+    </script>
+</body>
+</html>

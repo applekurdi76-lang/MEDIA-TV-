@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media TV - Admin Panel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        /* Security Alert */
+        .security-alert {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        /* Marquee Section Styling */
+        .marquee-edit-section {
+            background-color: #e6f7ff;
+            border: 1px solid #b3e0ff;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 6px;
+        }
+        .marquee-edit-section textarea {
+            width: 100%;
+            height: 80px;
+            padding: 10px;
+            border: 1px solid #99ccff;
+            border-radius: 4px;
+            font-family: 'rudawbold', Tahoma, sans-serif; 
+            font-size: 16px;
+            direction: rtl; 
+        }
+        
+        /* Category / Section Styling */
+        .channel-section {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #fafafa;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .section-header h2 {
+            margin: 0;
+            color: #555;
+            font-size: 1.4em;
+            font-family: 'rudawbold', Tahoma, sans-serif; /* Applied font */
+        }
+        .channel-item {
+            display: grid;
+            grid-template-columns: 2fr 4fr 1fr 1fr;
+            gap: 10px;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+        }
+        .channel-item:last-child {
+            border-bottom: none;
+        }
+        
+        /* Inputs and Buttons */
+        input[type="text"], input[type="password"] {
+            width: 95%;
+            padding: 8px;
+            margin-bottom: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: 'rudawbold', Tahoma, sans-serif; /* Applied font */
+        }
+        .btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            font-weight: bold;
+        }
+        .btn-add {
+            background-color: #28a745;
+            color: white;
+        }
+        .btn-add:hover {
+            background-color: #218838;
+        }
+        .btn-delete {
+            background-color: #dc3545;
+            color: white;
+        }
+        .btn-delete:hover {
+            background-color: #c82333;
+        }
+        .btn-save-all {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 25px;
+            font-size: 1.1em;
+            width: 100%;
+            margin-top: 30px;
+        }
+        .btn-save-all:hover {
+            background-color: #0056b3;
+        }
+        .btn-add-section {
+            background-color: #ffc107;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .password-section {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .message {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: none;
+        }
+        .message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🛠️ Media TV - Admin Panel</h1>
+
+        <div class="security-alert">
+            ئاگاداری: ئەم پەڕەیە ڕێگەی گۆڕینی داتای کەناڵەکانت پێدەدات. دڵنیابە لەوەی بە وشەی نهێنییەک پارێزراوە لە فایلی `save_channels.php`.
+        </div>
+
+        <div class="password-section">
+            <label for="admin-password">وشەی نهێنی بەڕێوەبردن (Admin Password):</label>
+            <input type="password" id="admin-password" placeholder="وشەی نهێنیەکەت لێرە بنووسە">
+            <p style="font-size: 0.8em; color: gray;">ئەم وشەی نهێنییە دەبێت هەمان بێت کە لەناو `save_channels.php` داتناوە.</p>
+        </div>
+
+        <div class="marquee-edit-section">
+            <h2>📰 دەستکاریکردنی شریتی هەواڵەکان (Marquee)</h2>
+            <p>ئەو دەقەی لێرە دەنوسرێت لە سەرەوەی پەڕەی سەرەکی نمایش دەکرێت:</p>
+            <textarea id="marquee-text-input" placeholder="بۆ نموونە: دەنگ و باس: مووچەی ئەم مانگە دابەش دەکرێت."></textarea>
+        </div>
+        <button class="btn btn-add-section" onclick="addSection()">+ زیادکردنی بەشێکی نوێ</button>
+
+        <div id="sections-container">
+            </div>
+
+        <div class="message" id="status-message"></div>
+
+        <button class="btn btn-save-all" onclick="saveData()">پاشەکەوتکردنی هەموو گۆڕانکارییەکان</button>
+    </div>
+
+    <script>
+        const sectionsContainer = document.getElementById('sections-container');
+        const statusMessage = document.getElementById('status-message');
+        const adminPasswordInput = document.getElementById('admin-password');
+        const marqueeTextInput = document.getElementById('marquee-text-input');
+
+        let fullData = {
+            marquee_text: "",
+            channels: {}
+        };
+
+        function showMessage(type, message) {
+            statusMessage.style.display = 'block';
+            statusMessage.className = `message ${type}`;
+            statusMessage.textContent = message;
+            setTimeout(() => {
+                statusMessage.style.display = 'none';
+            }, 5000);
+        }
+
+        function addChannel(sectionKey, name = '', url = '') {
+            if (!fullData.channels[sectionKey]) {
+                fullData.channels[sectionKey] = [];
+            }
+            fullData.channels[sectionKey].push({ name, url });
+            renderSection(sectionKey);
+        }
+
+        function deleteChannel(sectionKey, index) {
+            if (confirm('ئایا دڵنیایت لە سڕینەوەی ئەم کەناڵە؟')) {
+                fullData.channels[sectionKey].splice(index, 1);
+                renderSection(sectionKey);
+            }
+        }
+
+        function updateChannel(sectionKey, index, field, value) {
+            if (fullData.channels[sectionKey] && fullData.channels[sectionKey][index]) {
+                fullData.channels[sectionKey][index][field] = value;
+            }
+        }
+
+        function addSection() {
+            const newTitle = prompt('تکایە ناوی بەشی نوێ بنووسە (بۆ نموونە: کەناڵە منداڵانەکان):');
+            if (newTitle && !fullData.channels[newTitle]) {
+                fullData.channels[newTitle] = [];
+                renderAllSections();
+            } else if (newTitle) {
+                alert('ئەم بەشە پێشتر بوونی هەیە.');
+            }
+        }
+
+        function renameSection(oldKey) {
+            const newKey = prompt(`گۆڕینی ناوی بەشی: ${oldKey}`, oldKey);
+            if (newKey && newKey !== oldKey && !fullData.channels[newKey]) {
+                fullData.channels[newKey] = fullData.channels[oldKey];
+                delete fullData.channels[oldKey];
+                renderAllSections();
+            } else if (newKey && newKey !== oldKey) {
+                 alert('ئەم بەشە پێشتر بوونی هەیە یان ناوی ڕاست نییە.');
+            }
+        }
+
+        function deleteSection(key) {
+             if (confirm(`ئایا دڵنیایت لە سڕینەوەی بەشی "${key}" و هەموو کەناڵەکانی ناوی؟`)) {
+                delete fullData.channels[key];
+                renderAllSections();
+             }
+        }
+        
+        function renderSection(sectionKey) {
+            const section = document.getElementById(`section-${sectionKey.replace(/[^a-zA-Z0-9]/g, '-')}`);
+            if (!section) {
+                renderAllSections();
+                return;
+            }
+
+            const channelList = section.querySelector('.channel-items');
+            channelList.innerHTML = '';
+            
+            fullData.channels[sectionKey].forEach((channel, index) => {
+                const item = document.createElement('div');
+                item.classList.add('channel-item');
+                item.innerHTML = `
+                    <input type="text" value="${channel.name}" onchange="updateChannel('${sectionKey}', ${index}, 'name', this.value)" placeholder="ناوی کەناڵ">
+                    <input type="text" value="${channel.url}" onchange="updateChannel('${sectionKey}', ${index}, 'url', this.value)" placeholder="لینکی پەخش (URL)">
+                    <button class="btn btn-delete" onclick="deleteChannel('${sectionKey}', ${index})">سڕینەوە</button>
+                    <div>${index + 1}</div>
+                `;
+                channelList.appendChild(item);
+            });
+        }
+
+        function renderAllSections() {
+            sectionsContainer.innerHTML = '';
+
+            const sectionKeys = Object.keys(fullData.channels); 
+
+            sectionKeys.forEach(key => {
+                const section = document.createElement('div');
+                const safeKey = key.replace(/[^a-zA-Z0-9]/g, '-');
+                section.id = `section-${safeKey}`;
+                section.classList.add('channel-section');
+
+                section.innerHTML = `
+                    <div class="section-header">
+                        <h2>${key}</h2>
+                        <div>
+                            <button class="btn btn-delete" onclick="deleteSection('${key}')">سڕینەوەی بەش</button>
+                            <button class="btn" onclick="renameSection('${key}')">گۆڕینی ناوی بەش</button>
+                            <button class="btn btn-add" onclick="addChannel('${key}')">+ زیادکردنی کەناڵ</button>
+                        </div>
+                    </div>
+                    <div class="channel-items">
+                    </div>
+                `;
+                sectionsContainer.appendChild(section);
+                renderSection(key);
+            });
+        }
+
+
+        async function fetchChannels() {
+            try {
+                const response = await fetch('channels.json'); 
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                
+                fullData.marquee_text = data.marquee_text || "";
+                fullData.channels = data.channels || {};
+
+                marqueeTextInput.value = fullData.marquee_text;
+                renderAllSections();
+
+            } catch (error) {
+                console.error('Failed to load channels data:', error);
+                showMessage('error', 'نەتوانرا داتای کەناڵەکان بار بکرێت.');
+            }
+        }
+        
+        async function saveData() {
+            const password = adminPasswordInput.value;
+            if (password.length < 5) {
+                showMessage('error', 'تکایە وشەی نهێنی دروست بنووسە.');
+                return;
+            }
+
+            fullData.marquee_text = marqueeTextInput.value;
+
+            const dataToSave = JSON.stringify(fullData, null, 4); 
+
+            try {
+                const response = await fetch('save_channels.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `password=${encodeURIComponent(password)}&data=${encodeURIComponent(dataToSave)}`
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showMessage('success', result.message);
+                } else {
+                    showMessage('error', result.message);
+                }
+
+            } catch (error) {
+                console.error('Save failed:', error);
+                showMessage('error', 'کێشەیەک لە پەیوەندیکردن بە سێرڤەر ڕوویدا. دڵنیا بە لە بوونی فایلی save_channels.php.');
+            }
+        }
+
+        fetchChannels();
+    </script>
+</body>
+</html>

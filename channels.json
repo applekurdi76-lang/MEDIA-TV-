@@ -1,0 +1,58 @@
+{
+    "marquee_text": ". به رنامه ب سپونسه ریا میدیا باگێرا دهێته برێڤه برن .   ده نگ و باس: حکومه تا هه رێما کوردستانێ لیستا موچه ی هه یڤا ٩ راگه هاند ..",
+    "channels": {
+        "📺 کەناڵە کوردییەکان": [
+            { "name": "Zagros TV", "url": "https://5a3ed7a72ed4b.streamlock.net/zagrostv/SMIL:myStream.smil/playlist.m3u8" },
+            { "name": "Rudaw TV", "url": "https://svs.itworkscdn.net/rudawlive/rudawlive.smil/playlist.m3u8" },
+            { "name": "Kurdistan24", "url": "  https://d1x82nydcxndze.cloudfront.net/live/index.m3u8 " },
+            { "name": "Kurdistan TV", "url": " https://5a3ed7a72ed4b.streamlock.net/live/SMIL:myStream.smil/chunklist_w1840895338_b1700000_sleng_t64MTA4MHA=.m3u8 " },
+            { "name": "WAAR TV", "url": "https://live.kwikmotion.com/waarmedialive/waarmedia.smil/playlist.m3u8" },
+            { "name": "Kurdmax TV", "url": "https://6476e46b58f91.streamlock.net/liveTrans/KurdmaxS0rani!/playlist.m3u8 " },
+            { "name": "Kurdmax Show TV", "url": "https://6476e46b58f91.streamlock.net/liveTrans/SHOW2/playlist.m3u8" },
+            { "name": "TRT Kurdi TV", "url": " https://tv-trtkurdi.medya.trt.com.tr/master.m3u8" },
+            { "name": "Amozhgari TV", "url": " https://app-live.org/live/3268334b/index.m3u8  " },
+            { "name": "Zarok TV", "url": " https://zindikurmanci.zaroktv.com.tr/hls/stream.m3u8 " },
+            { "name": "Afarin Baxcha (1080p)", "url": "https://5dcabf026b188.streamlock.net/afarinTV/livestream/playlist.m3u8" },
+            { "name": "Afarin TV (720p)", "url": "https://65f16f0fdfc51.streamlock.net/afarinTV/livestream/playlist.m3u8" },
+            { "name": "Channel 8 Kurdish (720p)", "url": "https://live.channel8.com/Channel8-Kurdish/index.fmp4.m3u8" },
+            { "name": "Gali Kurdistan (720p)", "url": "https://live.bradosti.net/live/GaliKurdistan_playlist.m3u8" },
+            { "name": "NRT TV (720p)", "url": "https://media.streambrothers.com:1936/8226/8226/playlist.m3u8" },
+            { "name": "Payam TV (720p)", "url": "https://media2.streambrothers.com:1936/8218/8218/playlist.m3u8" },
+            { "name": "Avar TV (1080p)", "url": "https://avr.host247.net/live/AvarTv/playlist.m3u8" },
+            { "name": "Eman Tv (1080p)", "url": "https://avr.host247.net/live/emantv/playlist.m3u8" },
+            { "name": "Mix kurdy (1080p)", "url": "https://avr.host247.net/live/Mix-kurdy/playlist.m3u8" },
+            { "name": "Farmoda TV (1080p)", "url": "https://avr.host247.net/live/FarmodaTV/playlist.m3u8" },
+            { "name": "AVA Family", "url": "https://ca-rt.onetv.app:8443/AVAFamily/index-0.m3u8" },
+            { "name": "AVA TV", "url": "https://ava[zhmara].site/upload/ava.m3u8" },
+            { "name": "Duhok Radio", "url": " https://stream.zeno.fm/unwq3jdyhmbuv?adtonosListenerId=01JQ8BXPG82XPXXHPY3DGRF7GB&aw_0_req_lsid=4eba9c7813187df27d76d4bea34c4188/" }
+        ],
+        "🌍 کەناڵە عەرەبی و عێراقییەکان": [
+            { "name": "Al Jazeera Arabic (1080p)", "url": " https://live-hls-web-aja.getaj.net/AJA/index.m3u8" },
+            { "name": "Al-Hadath TV", "url": " https://live.alarabiya.net/alarabiapublish/alhadath.smil/playlist.m3u8 " },
+            { "name": "Al Arabiya (1080p)", "url": "https://mbc1-enc.edgenextcdn.net/out/v1/f5f319206ed740f9a831f2097c2ead23/index.m3u8" },
+            { "name": "Sky News TV", "url": "https://stream.skynewsarabia.com/hls/sna.m3u8 " },
+            { "name": "Al Iraqia (720p)", "url": "https://cdn.catiacast.video/abr/8d2ffb0aba244e8d9101a9488a7daa05/playlist.m3u8" },
+            { "name": "Al Iraqia News (720p)", "url": "https://cdn.catiacast.video/abr/78054972db7708422595bc96c6e024ac/playlist.m3u8" },
+            { "name": "Al Rabiaa TV (1080p)", "url": "https://stream.castr.com/65045e4aba85cfe0025e4a60/live_c6c4040053cd11ee95b47153d2861736/index.fmp4.m3u8" },
+            { "name": "Al Rasheed TV (1080p)", "url": "https://media1.livaat.com/static/AL-RASHEED-HD/playlist.m3u8" },
+            { "name": "Al-Sharqiya (1080p)", "url": "https://5d94523502c2d.streamlock.net/home/mystream/playlist.m3u8" },
+            { "name": "UTV (1080p)", "url": "https://mn-nl.mncdn.com/utviraqi2/64c80359/index.m3u8" },
+            { "name": "Dijlah TV (1080p)", "url": "https://ghaasiflu.online/Dijlah/index.m3u8" },
+            { "name": "MBC (1080p)", "url": "https://mbc1-enc.edgenextcdn.net/out/v1/0965e4d7deae49179172426cbfb3bc5e/index.m3u8" },
+            { "name": "MBC 2 (1080p)", "url": "https://edge66.magictvbox.com/liveApple/MBC_2/index.m3u8" },
+            { "name": "MBC Iraq (1080p)", "url": "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-iraq/e38c44b1b43474e1c39cb5b90203691e/index.m3u8" },
+            { "name": "Rotana Cinema (720p)", "url": "https://bcovlive-a.akamaihd.net/9527a892aeaf43019fd9eeb77ad1516e/eu-central-1/6057955906001/playlist.m3u8" },
+            { "name": "Sama Dubai (1080p)", "url": "https://dmieigthvllta.cdn.mgmlcdn.com/samadubaiht/smil:samadubai.stream.smil/platlist.m3u8" },
+            { "name": "Lana Tv (1080p)", "url": "https://p-ltv.akamaized.net/ltv/ltv.m3u8" }
+        ],
+        "🌐 کەناڵە جیهانی و وەرزشییەکان": [
+            { "name": "Bein Sport 1 (Link might be unstable)", "url": " https://dd.alkoora.live/albaplayer/on-time-sport-1" },
+            { "name": "Dubai Sports (1080p)", "url": "https://dmidspta.cdn.mgmlcdn.com/dubaisports/smil:dubaisports.stream.smil/master.m3u8" },
+            { "name": "BBC News (1080p)", "url": "https://d3pxo1qcgzxtxs.cloudfront.net/10005/99951298/hls/playlist.m3u8?ads.xumo_channelId=99951298" },
+            { "name": "Fox News (1080p)", "url": "https://247preview.foxnews.com/hls/live/2020027/fncv3preview/primary.m3u8" },
+            { "name": "Spacetoon (1080p)", "url": "https://streams.spacetoon.com/live/stchannel/smil:livesmil.smil/playlist.m3u8" },
+            { "name": "Nickelodeon (1080p)", "url": "http://23.237.104.106:8080/USA_NICKELODEON/index.m3u8" },
+            { "name": "National Geographic Abu Dhabi (1080p)", "url": "https://streamer1.qna.org.qa/148133202_live/148133202_63.sdp/playlist.m3u8" }
+        ]
+    }
+}
